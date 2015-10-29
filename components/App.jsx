@@ -1,6 +1,9 @@
 
 import React from 'react'
 
+// Only import what you need
+import Footer from './Footer'
+
 export default class App extends React.Component {
 
   render() {
@@ -10,10 +13,19 @@ export default class App extends React.Component {
       }
     }
 
+    const data = {
+      footer: {
+        links: [
+          { href: '#!', children: 'Link 1' },
+          { href: '#!', children: 'Link 2' },
+        ]
+      }
+    }
+
     return (
       <div style={styles.root}>
-        <h1>min</h1>
-        <p>Bare minimum React + webpack + hot loader</p>
+        <h1>static</h1>
+        <Footer {...data.footer} />
       </div>
     )
   }

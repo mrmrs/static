@@ -1,18 +1,32 @@
 import React from 'react'
 
-export default class Footer extends React.Component {
+/* classes are cool, but most of these can be
+ * stateless function components
+* */
 
-  render() {
-    const styles = {
-      root: {
-      }
-    }
+const Footer = ({ links, someProp, ...props }) => {
+  return (
+    <footer>
+      <p>This is a footer that has not very much content.</p>
 
-    return (
-      <footer>
-        <p>This is a footer that has not very much content.</p>
-      </footer>
-    )
-  }
+      {/* If you wanna pass children in */}
+      {props.children}
+
+      {/*
+        If you wanna loop through links
+        You'd probably want a Link component for these
+      */}
+      {links.map((link, i) => (
+        <a key={i} {...link} />
+      ))}
+    </footer>
+  )
 }
+
+Footer.defaultProps = {
+  links: []
+}
+
+export default Footer
+
 
